@@ -63,6 +63,9 @@ Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
+# Start Pack Content
+Content/StarterContent/*
+
 # Mac Artifacts
 .DS_Store
 

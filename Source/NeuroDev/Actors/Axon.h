@@ -3,7 +3,6 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "Actors/AxonSegment.h"
 #include <vector>
 #include "Axon.generated.h"
 
@@ -22,12 +21,19 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* Mesh;
+
 	FVector Target;
 	
 	FVector FakeTarget;
 
-	std::vector<AAxonSegment*> Segments;
+	std::vector<class AAxonSegment*> Segments;
 
+	std::vector<class ASynapse*> Synapses;
 
-	
+	float Activity;
+
+	void Grow();
+
 };

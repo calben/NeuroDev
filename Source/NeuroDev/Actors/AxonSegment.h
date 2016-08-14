@@ -23,6 +23,13 @@ public:
 	UPROPERTY(EditAnywhere)
 		UStaticMeshComponent* Mesh;
 
+	UPROPERTY(EditAnywhere)
+		float activity;
+
 	void SetLength(float Value);
+
+	const FVector GetStartLocation();
+
+	const FVector GetEndLocation();
 
 };

@@ -7,7 +7,6 @@
 // Sets default values
 AAxonSegment::AAxonSegment()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 
@@ -18,7 +17,7 @@ AAxonSegment::AAxonSegment()
 		Mesh->SetStaticMesh(MeshObj.Object);
 		Mesh->SetMaterial(0, MaterialObj.Object);
 	}
-
+	RootComponent = Mesh;
 }
 
 // Called when the game starts or when spawned
@@ -37,5 +36,15 @@ void AAxonSegment::Tick( float DeltaTime )
 void AAxonSegment::SetLength(float Value)
 {
 	Mesh->SetRelativeScale3D(FVector::FVector(Value, 1.0f, 1.0f));
+	this->SetActorLocation(this->GetActorLocation() + FVector::FVector(Value * 50, 0.0f, 0.0f));
 }
 
+const FVector AAxonSegment::GetStartLocation()
+{
+	return this->GetActorLocation() - this->GetActorForwardVector() * this->GetActorScale().X * 50;
+}
+
+const FVector AAxonSegment::GetEndLocation()
+{
+	return this->GetActorLocation() + this->GetActorForwardVector() * this->GetActorScale().X * 50;
+}

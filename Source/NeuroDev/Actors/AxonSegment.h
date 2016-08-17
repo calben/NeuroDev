@@ -24,6 +24,9 @@ public:
 		UStaticMeshComponent* Mesh;
 
 	UPROPERTY(EditAnywhere)
+		URotatingMovementComponent* RotatingMovement;
+
+	UPROPERTY(EditAnywhere)
 		float activity;
 
 	void SetLength(float Value);
@@ -32,4 +35,5 @@ public:
 
 	const FVector GetEndLocation();
 
+	void RotateAboutStart(FRotator Value);
 };

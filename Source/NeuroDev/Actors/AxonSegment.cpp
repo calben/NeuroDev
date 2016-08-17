@@ -2,7 +2,7 @@
 
 #include "NeuroDev.h"
 #include "AxonSegment.h"
-
+#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 AAxonSegment::AAxonSegment()
@@ -36,6 +36,7 @@ void AAxonSegment::Tick( float DeltaTime )
 void AAxonSegment::SetLength(float Value)
 {
 	Mesh->SetRelativeScale3D(FVector::FVector(Value, 1.0f, 1.0f));
+	this->RotatingMovement->PivotTranslation = this->GetActorLocation();
 	this->SetActorLocation(this->GetActorLocation() + FVector::FVector(Value * 50, 0.0f, 0.0f));
 }
 
@@ -47,4 +48,8 @@ const FVector AAxonSegment::GetStartLocation()
 const FVector AAxonSegment::GetEndLocation()
 {
 	return this->GetActorLocation() + this->GetActorForwardVector() * this->GetActorScale().X * 50;
+}
+
+void AAxonSegment::RotateAboutStart(FRotator Value)
+{
 }

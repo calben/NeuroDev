@@ -17,5 +17,6 @@ public:
 
 	int GenerateIndexByBetaDistribution(int count, float alpha, float beta);
 
+	void PivotActorAboutPoint(AActor* actor, FVector point, FRotator rotation);
 
 };

@@ -12,8 +12,6 @@ UCLASS()
 class NEURODEV_API ANeuroDevGameMode : public AGameMode
 {
 	GENERATED_BODY()
-	
-	
-	
+
 	
 };

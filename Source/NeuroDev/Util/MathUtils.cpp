@@ -9,8 +9,3 @@ int UMathUtils::GenerateIndexByBetaDistribution(int count, float alpha, float be
 	// tmp
 	return count - 1;
 }
-
-void UMathUtils::PivotActorAboutPoint(AActor* actor, FVector point, FRotator rotation)
-{
-	actor->SetActorRotation(actor->GetActorRotation() + rotation);
-}

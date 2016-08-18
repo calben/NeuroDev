@@ -29,11 +29,10 @@ public:
 	UPROPERTY(EditAnywhere)
 		float activity;
 
-	void SetLength(float Value);
+	void SetLengthAndRotation(float Length, FRotator Rotation);
 
 	const FVector GetStartLocation();
 
 	const FVector GetEndLocation();
 
-	void RotateAboutStart(FRotator Value);
 };

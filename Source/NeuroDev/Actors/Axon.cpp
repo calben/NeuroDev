@@ -32,7 +32,7 @@ void AAxon::BeginPlay()
 		GetActorRotation());
 	Segments.push_back(new_segment);
 
-	for (auto i = 0; i < 3; i++)
+	for (auto i = 0; i < 100; i++)
 	{
 		this->Grow();
 	}
@@ -48,10 +48,8 @@ void AAxon::Tick(float DeltaTime)
 void AAxon::Grow()
 {
 	AAxonSegment* segment_of_origin = Segments[Segments.size() - 1];
-	UE_LOG(LogTemp, Warning, TEXT("NEW ORIGIN IS %s"), *(segment_of_origin->GetEndLocation().ToString()));
 	FRotator new_segment_rot = UKismetMathLibrary::RandomRotator(0.0f);
 	AAxonSegment* new_segment = GetWorld()->SpawnActor<AAxonSegment>(segment_of_origin->GetEndLocation(), FRotator::ZeroRotator);
-	new_segment->RotateAboutStart(new_segment_rot);
-	new_segment->SetLength(10.0f);
+	new_segment->SetLengthAndRotation(10.0f, new_segment_rot);
 	Segments.push_back(new_segment);
 }

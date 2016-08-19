@@ -2,10 +2,13 @@
 
 #include "NeuroDev.h"
 #include "MathUtils.h"
+#include <random>
 
 
-int UMathUtils::GenerateIndexByBetaDistribution(int count, float alpha, float beta)
+int UMathUtils::GenerateIndexByBetaDistribution(int count, float a, float b)
 {
-	// tmp
-	return count - 1;
+	std::default_random_engine generator;
+	std::gamma_distribution<double> distribution(a, b);
+	double beta_value = distribution(generator);
+	return FMath::Ceil(beta_value * count) - 1;
 }
